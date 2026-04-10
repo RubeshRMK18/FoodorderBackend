@@ -6,18 +6,26 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi;
 
+using FoodOrderingSystem.Data;
+using FoodOrderingSystem.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddControllers();
+builder.Services.AddScoped<FoodService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<AuthService>();
 
@@ -76,18 +84,18 @@ builder.Services.AddCors(options =>
               .AllowCredentials();  // ← Add this line
     });
 });
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+
+   app.UseSwagger();
     app.UseSwaggerUI();
-
 }
-
+app.UseCors("AllowAngular");
 app.UseHttpsRedirection();
-app.UseCors("AllowAngular");  // ← Make sure this is here
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
