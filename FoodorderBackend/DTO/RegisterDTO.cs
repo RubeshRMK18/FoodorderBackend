@@ -1,11 +1,9 @@
 ﻿namespace FoodorderBackend.DTO
 {
-    public class RegisterDTO
+    public class RegisterDto
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
-
+        public string Email { get; set; }
         public string Password { get; set; }
     }
 }
