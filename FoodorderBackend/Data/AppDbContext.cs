@@ -1,4 +1,4 @@
-﻿using FoodOrderingSystem.Model;
+using FoodOrderingSystem.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrderingSystem.Data
@@ -8,7 +8,8 @@ namespace FoodOrderingSystem.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-        public DbSet<Food> Foods { get; set; } 
 
+        public DbSet<Model.User> Users { get; set; }
+        public DbSet<Food> Foods { get; set; } 
     }
 }
