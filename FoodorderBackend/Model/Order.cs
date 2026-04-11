@@ -1,19 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FoodorderBackend.Model
 {
     public class Order
     {
         [Key]
-        public int Id { get; set; }
+        public int OrderId { get; set; }
 
-        public int UserId { get; set; }
-
-        public decimal TotalAmount { get; set; }
-
-        public string Status { get; set; } = "Pending";
-
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public string FoodName { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
     }
 }
-
