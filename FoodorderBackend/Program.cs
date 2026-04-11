@@ -1,3 +1,12 @@
+using FoodorderBackend.Data;
+using FoodorderBackend.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi;
+
 using FoodOrderingSystem.Data;
 using FoodOrderingSystem.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +26,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<CartService>();
 builder.Services.AddScoped<FoodService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<OrderService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();

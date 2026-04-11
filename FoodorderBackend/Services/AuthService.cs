@@ -50,7 +50,7 @@ public class AuthService
         return new
         {
             token = token,
-            userId = user.Id,
+            userId = user.UserId,
             name = user.Name
         };
     }
@@ -65,7 +65,7 @@ public class AuthService
 
         var claims = new[]
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
             new Claim(ClaimTypes.Name, user.Email)
         };
 

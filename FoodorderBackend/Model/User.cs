@@ -1,8 +1,11 @@
-﻿namespace FoodorderBackend.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FoodorderBackend.Model
 {
     public class User
     {
-        public int Id { get; set; }              // PK
+        [Key]
+        public int UserId { get; set; }              // PK
 
         public string Name { get; set; }
 
